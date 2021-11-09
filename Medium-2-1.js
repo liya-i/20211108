@@ -6,7 +6,7 @@ let readbody = require("./Cohc-2-1/body");
 
 let bodys=readbody.ArticleBodys;
 let AddTimeBody=readbody.AddTimeBody;
-let YouthBody = bodys.split('&');
+let YouthBody = bodys.split(',');
 let ReadArr = [];
 let readscore=0;
 
