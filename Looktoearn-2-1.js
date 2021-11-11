@@ -1,7 +1,7 @@
 const $ = new Env("中青看点浏览赚&看看赚")
 const notify = $.isNode() ? require('./sendNotify') : '';
-let startArr = require('./Cohc-2-1/start') : '';
-let lookArr= require('./Cohc-2-1/look') : '';
+let startArr = require('./Cohc-2-1/start');
+let lookArr= require('./Cohc-2-1/look');
 let gainscore = 0, lookscore = 0;
 let StartBody = startArr,LookBody = lookArr;
 let startbodys = $.getdata('youth_start');
