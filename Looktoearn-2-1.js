@@ -3,7 +3,8 @@ const notify = $.isNode() ? require('./sendNotify') : '';
 let startArr = require('./Cohc-2-1/start');
 let lookArr= require('./Cohc-2-1/look');
 let gainscore = 0, lookscore = 0;
-let StartBody = startArr.StartBody,LookBody = lookArr.LookBody;
+let StartBody = startArr.StartBody;
+let LookBody = lookArr.LookBody;
 let startbodys = $.getdata('youth_start');
 let lookbodys = $.getdata('youth_look')
 
