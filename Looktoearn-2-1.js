@@ -15,6 +15,7 @@ let Token1Arr = [
 ];
 !(async () => {
     await all();
+    await all1();
 })()
     .catch((e) => {
         $.log('', `❌ ${$.name}, 失败! 原因: ${e}!`, '')
@@ -28,20 +29,36 @@ async function all() {
     for (let i = 0; i < TokenArr.length; i++) {
         $.log(`\n准备第${i + 1}次任务`);
         Token = TokenArr[i];
-        Token = Token1Arr[i];
         await adlickstart();
-        await adlickstart1();
         await $.wait(randomNum(0, 2000));
         for (let i = 0; i < 6; i++) {
             await bannerstatus(i);
-            await bannerstatus1(i);
             await $.wait(randomNum(0, 2000));
         }
         await adlickend();
+
+    }
+}
+
+
+async function all1() {
+    //nodejs运行
+    for (let i = 0; i < Token1Arr.length; i++) {
+        $.log(`\n准备第${i + 1}次任务`);
+        Token = Token1Arr[i];
+        await adlickstart1();
+        await $.wait(randomNum(0, 2000));
+        for (let i = 0; i < 6; i++) {
+            await bannerstatus1(i);
+            await $.wait(randomNum(0, 2000));
+        }
         await adlickend1();
 
     }
 }
+
+
+
 
 function adlickstart() {
     return new Promise((resolve, reject) => {
