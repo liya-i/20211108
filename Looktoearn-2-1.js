@@ -1,237 +1,231 @@
-const $ = new Env("中青看点浏览赚&看看赚")
-const notify = $.isNode() ? require('./sendNotify') : '';
-let startArr = '';
-let lookArr= '';
-let gainscore = 0, lookscore = 0;
-let StartBody = '';
-let LookBody = '';
-let startbodys = 'p=9NwGV8Ov71o%3DnXy4DSepUrpNij1znriwLz5F0xxoMfi_VQahn-W5i8FF8UBxFNlt4vqvcd-sHm0oNV5y0WIm7pkK8NIRSgs4lzVzwrSRQsgoQL6yvCjZ2e_VWFYwqZoZo9qYK0F7Wkj59Xz9-jppgXsJa05dm2iQ1fNzt6XnoMAlI8PmpqgP6P4ckCg8M8FB1hIt8xLNsUPBgOtQ46cC1C9D-IV_odAVuvn9phpFtZ8vrWBKx-VRkODs4r7_zFCVWRhz3uu5Q44RHoAYq4mStwBkwJZHr83SM7zG-xlWdX16oKgryKwcP3FcXkOnPDznQjOe7sDRVne80aAZ7SRGykjCV_OWREOHbjljkO7J7x4z37nRKKeePkx0eyUZ8KrVV5TEK_Ut-ZiTqhonh9Sl16Bp6CKIFbMJ3pW0CRFNa_HAOKZaTPDVrMZiai0KTjaP3Xqzo-pSOEuNuHgMjV8r2858EdwgpaIaRNZkgJzWyx1A5vLU8nO4B273ppxOk8FDzH3hyQFaimWl2x5GTaodQC5Kn4pbOx8G8qYa2x8MXZcx_pznEP7UbKKBaVCe--u_fpfIKOVOGqTZXIKEULYrAmX3S0WobkloKeq5O7-MWgbzYwf9AtS4UTwKMkIqiDoQ59WClga5JG9BR9MrTbhWbH5yOlVkgxQBD8Cj6o0QO-QnRlaKHkCJTHOj-2ODpYXMvpML22XvtHKtwElcrZJFKMRPra3LpUAU2NcLnXsV58Vli-vMuAa2eFrzgOVkbZPquPFHGFuVTtBfb1XSVpBfhT5Sn1WmW7SCwONSI4MLdvemJXtI4Ee1i2UBeUC3R-1a8EuBHnRAPlDXZG6E884iTWNJpoNjkvjUmHHWsP2diMQoDDS0_GqozdE%3D';
-let lookbodys = 'p=9NwGV8Ov71o%3DC5Jtxwc6iVuTcJotRQ4YI8A3NCwuYXT0UfWHx_1gDeHvbsGBmARyrbT9hPMoCNf-4NWL-Mz3q9QzTM-YrNyTotosG88NB9KxMxLD7ibu0_Lj6V8Dkn023YiQh78ysZBdXaj-5EeRg6CI8xn45futTlAZ_w9PffOldsChdQKe1utXEMedwU-pePsHJPE221zxKOiVwfof5k-othtBxJPjh2aH32AeqVfqUG5AhbF0PJWLwkpJYM99H9AlBmS6xgXJNQ07tjgAehbNF5yqmQ1_DIqu9n-WhCXkGz-5zgJ6K6Zng0ZKU9UzFN7eBMQMgcmWUpi39-zLSC1OI06MGvt6stkhkFNCzQPoKzs8ioSXvIphLmsgobUtyxS-rAMqy-cqNRxiEYI-Frh87Np_r9IuKvtUr8htuM0PxSkIpUX6_KqaSxA3HX0psNgo2WhELCf8uYvUg_4x7ZhhPMhsoyhToQ%3D%3D';
 
-if (isGetCookie = typeof $request !==`undefined`) {
-   GetCookie();
-   $.done()
-} 
-if (!$.isNode() && !lookbodys) {
-    $.msg($.name, "您未获取看看赚请求，请先获取");
-} else if (!$.isNode() && !startbodys) {
-    $.msg($.name, "您未获取浏览赚请求，请先获取");
-}
-if (!$.isNode() && !startbodys.indexOf("&") == -1) {
-    startArr.push(startbodys)
-} else if (!$.isNode() && !lookbodys.indexOf("&") == -1) {
-    lookArr.push(lookbodys)
-} else {
-    if (!$.isNode() && !startbodys.indexOf("&") > -1) {
-        StartBody = startbodys.split('&');
-    }
-    if (!$.isNode() && !lookbodys.indexOf("&") > -1) {
-        LookBody = lookbodys.split('&');
-    }
-    if ($.isNode()) {
-        if (process.env.YOUTH_START && process.env.YOUTH_START.indexOf('&') > -1) {
-            StartBody = process.env.YOUTH_START.split('&');
-        } else {
-            StartBody = [process.env.YOUTH_START]
-        };
-        if (process.env.YOUTH_LOOK && process.env.YOUTH_LOOK.indexOf('&') > -1) {
-            LookBody = process.env.YOUTH_LOOK.split('&');
-        } else {
-            LookBody = [process.env.YOUTH_LOOK]
-        }
-    }
-    Object.keys(StartBody).forEach((item) => {
-        if (StartBody[item]) {
-            startArr.push(StartBody[item])
-        }
-    });
-    Object.keys(LookBody).forEach((item) => {
-        if (LookBody[item]) {
-            lookArr.push(LookBody[item])
-        }
-    })
-}
-timeZone = new Date().getTimezoneOffset() / 60;
-timestamp = Date.now() + (8 + timeZone) * 60 * 60 * 1000;
-bjTime = new Date(timestamp).toLocaleString('zh', {
-    hour12: false,
-    timeZoneName: 'long'
-});
-console.log(`\n === 脚本执行 ${bjTime} ===\n`);
-!(async() => {
-    $.log(`您共提供${startArr.length}次浏览赚任务`)
-    if (startArr.length !== 0) {
-        for (let i = 0; i < startArr.length; i++) {
-            if (startArr[i]) {
-                gainbody = startArr[i];
-                $.index = i + 1;
-                $.log(`-------------------------\n\n开始中青看点浏览赚第${$.index}次任务`)
-            }
-            await GainStart();
-        }
-        console.log(`-------------------------\n\n中青看点共完成${$.index}次任务，共计获得${gainscore}个青豆，浏览赚任务全部结束`);
-        $.msg("中青看点浏览赚", `共完成${$.index}次任务`+`  共计获得${gainscore}个青豆`);
-    }
-    $.log(`\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n您共提供${lookArr.length}次看看赚任务\n`)
-    if (lookArr.length !== 0) {
-        for (let k = 0; k < lookArr.length; k++) {
-            if (lookArr[k]) {
-                lookbody = lookArr[k];
-                $.index = k + 1;
-                $.log(`-------------------------\n\n开始中青看点看看赚第${$.index}次任务`)
-            }
-            await lookStart();
-        }
-        console.log(`-------------------------\n\n中青看点共完成${$.index}次任务，共计获得${lookscore}个青豆，看看赚任务全部结束`);
-        $.msg("中青看点看看赚", '共完成' + (lookArr.length + startArr.length) + '次任务，共计获得' + parseInt(lookscore + gainscore) + '个青豆');
-    }
-    if ($.isNode()) {
-        //await notify.sendNotify($.name，`共完成${$.index}次任务，\n共计获得${gainscore}个青豆`
-    }
+
+const jobname = '看看赚'
+const $ = Env(jobname)
+
+
+let TokenArr = [
+    'p=9NwGV8Ov71o%3DC5Jtxwc6iVuTcJotRQ4YI8A3NCwuYXT0ZKZrNG5Jfn32MM85zwLbuwWRHCVzOIc3ml5VafuqJxE9MXKxyhhqN15Yyjpdlcg0hAtx3p44rAQIMWQMnykju86dWSKGqFCl32ktw-21XnlWILR83HwNBYBObFqH1wdC3-1BRnN6lVrv5VdTxltr9DPbvoTXMFNEbW0_KfVnq6WSDBUKG4JRmVwCoofXKVVTRBiAacJyJ3g9zSWl0djImLyQdZ69Md-dbAf7dLCrHxfIdX0_fZfq2pNJcpIG22J07KYXCexZtgEdBFQaYS5jvCTid90PWkLxIxrvqdeqIWJ47t0HQeweuFyVGVpksPpzc3vi8GfLiI_mEs2Jfy0YS5WkKpMhx1hNwsM0uuQD5D8nYy7DmBv6V2Ilp9JrUrDHuFQv8R_iSoQc8BsodrOucuvLREG35iacPwEzvDXAIabXchmA8xSYyw%3D%3D',
+
+];
+let Token1Arr = [
+    'p=9NwGV8Ov71o%3DnXy4DSepUrpNij1znriwLz5F0xxoMfi_VQahn-W5i8FF8UBxFNlt4vqvcd-sHm0oNV5y0WIm7pkK8NIRSgs4lzVzwrSRQsgoQL6yvCjZ2e_VWFYwqZoZo9qYK0F7Wkj59Xz9-jppgXsJa05dm2iQ1fNzt6XnoMAlI8PmpqgP6P4ckCg8M8FB1hIt8xLNsUPBgOtQ46cC1C9D-IV_odAVuvn9phpFtZ8vrWBKx-VRkODs4r7_zFCVWRhz3uu5Q44RHoAYq4mStwBkwJZHr83SM7zG-xlWdX16oKgryKwcP3FcXkOnPDznQjOe7sDRVne80aAZ7SRGykjCV_OWREOHbjljkO7J7x4z37nRKKeePkx0eyUZ8KrVV5TEK_Ut-ZiTqhonh9Sl16Bp6CKIFbMJ3pW0CRFNa_HAOKZaTPDVrMZiai0KTjaP3Xqzo-pSOEuNuHgMjV8r2858EdwgpaIaRNZkgJzWyx1A5vLU8nO4B273ppxOk8FDzH3hyQFaimWl2x5GTaodQC5Kn4pbOx8G8qYa2x8MXZcx_pznEP7UbKKBaVCe--u_fpfIKOVOGqTZXIKEULYrAmX3S0WobkloKeq5O7-MWgbzYwf9AtS4UTwKMkIqiDoQ59WClga5JG9BR9MrTbhWbH5yOlVkgxQBD8Cj6o0QO-QnRlaKHkCJTHOj-2ODpYXMvpML22XvtHKtwElcrZJFKMRPra3LpUAU2NcLnXsV58Vli-vMuAa2eFrzgOVkbZPquPFHGFuVTtBfb1XSVpBfhT5Sn1WmW7SCwONSI4MLdvemJXtI4Ee1i2UBeUC3R-1a8EuBHnRAPlDXZG6E884iTWNJpoNjkvjUmHHWsP2diMQoDDS0_GqozdE%3D',
+
+
+];
+!(async () => {
+    await all();
 })()
-    .catch((e) => $.logErr(e))
-    .finally(() => $.done())
-
-function GainStart() {
-    return new Promise((resolve, reject) => {
-        $.post(gainHost('task/browse_start.json', gainbody), async(error, resp, data) => {
-            let startres = JSON.parse(data);
-            if (startres.success == false) {
-                smbody = $.getdata('youth_start').replace(gainbody + "&", "");
-                $.setdata(smbody, 'youth_start');
-                $.log(startres.message + "已自动删除")
-            } else {
-                comstate = startres.items.comtele_state;
-                if (comstate == 0) {
-                    $.log("任务开始，" + startres.items.banner_id + startres.message);
-                    await $.wait(10000);
-                    await GainEnd()
-                } else if (comstate == 1) {
-                    $.log("任务:" + startres.items.banner_id + "已完成，本次跳过");
-                }
-            }
-            resolve()
-        })
+    .catch((e) => {
+        $.log('', `❌ ${$.name}, 失败! 原因: ${e}!`, '')
     })
-}
-
-function lookStart() {
-    return new Promise((resolve, reject) => {
-        $.post(gainHost('Nameless/adlickstart.json', lookbody), async(error, resp, data) => {
-            startlk = JSON.parse(data);
-            if (startlk.success == false) {
-                smbody = $.getdata('youth_look').replace(lookbody + "&", "");
-                $.setdata(smbody, 'youth_look');
-                $.log(startlk.message + "已自动删除")
-            } else {
-                comstate = startlk.items.comtele_state;
-                if (comstate == 0) {
-                    $.log("任务开始，" + startlk.items.banner_id + startlk.message);
-                    for (let j = 0; j < startlk.items.see_num - startlk.items.read_num; j++) {
-                        $.log("任务执行第" + parseInt(j + 1) + "次")
-                        await $.wait(8000);
-                        await lookstatus()
-                    }
-                    await $.wait(10000);
-                    await lookEnd()
-                } else if (comstate == 1) {
-                    $.log("任务:" + startlk.items.banner_id + "已完成，本次跳过");
-                }
-            }
-            resolve()
-        })
+    .finally(() => {
+        $.done();
     })
-}
 
-function GainEnd() {
-    return new Promise((resolve, reject) => {
-        $.post(gainHost('task/browse_end.json', gainbody), (error, resp, data) => {
-            let endres = JSON.parse(data);
-            if (endres.success == true) {
-                $.log("任务" + endres.items.banner_id + endres.message + "，恭喜获得" + endres.items.score + "个青豆");
-                gainscore += parseInt(endres.items.score)
-            } else {
-                $.log(endres.message)
-            }
-            resolve()
-        })
-    })
-}
+async function all() {
+    //nodejs运行
+    for (let i = 0; i < TokenArr.length; i++) {
+        $.log(`\n准备第${i + 1}次任务`);
+        Token = TokenArr[i];
+        Token = Token1Arr[i];
+        await adlickstart();
+        await adlickstart1();
+        await $.wait(randomNum(0, 2000));
+        for (let i = 0; i < 6; i++) {
+            await bannerstatus(i);
+            await bannerstatus1(i);
+            await $.wait(randomNum(0, 2000));
+        }
+        await adlickend();
+        await adlickend1();
 
-function lookstatus() {
-    return new Promise((resolve, reject) => {
-        $.post(gainHost('Nameless/bannerstatus.json', lookbody), (error, resp, data) => {
-            let endres = JSON.parse(data);
-            if (endres.success == true) {
-                $.log("任务" + endres.items.banner_id + endres.message);
-            } else {
-                $.log(endres.message)
-            }
-            resolve()
-        })
-    })
-}
-
-function lookEnd() {
-    return new Promise((resolve, reject) => {
-        $.post(gainHost('Nameless/adlickend.json', lookbody), (error, resp, data) => {
-            let endres = JSON.parse(data);
-            if (endres.success == true) {
-                $.log("任务" + endres.items.banner_id + endres.message + "，" + endres.items.desc)
-                lookscore += parseInt(endres.items.score)
-            } else {
-                $.log(endres.message)
-            }
-            resolve()
-        })
-    })
-}
-
-function gainHost(api, body) {
-    return {
-        url: 'https://ios.baertt.com/v5/' + api,
-        headers: {
-            'User-Agent': 'KDApp/1.7.8 (iPhone; iOS 14.0; Scale/3.00)',
-            'Host': 'ios.baertt.com',
-            'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body: body
     }
 }
 
+function adlickstart() {
+    return new Promise((resolve, reject) => {
+        const url = "https://ios.baertt.com/v5/Nameless/adlickstart.json";
+        const headers = {};
+        const body = Token;
+        const request = {
+            url: url,
+            headers: headers,
+            body: body
+        };
 
-function GetCookie() {
-    if ($request && $request.method != 'OPTIONS' && $request.url.match(/\/browse_start\.json/)) {
-        startbodyVal = $request.body;
-        if (startbodys) {
-            if (startbodys.indexOf(startbodyVal) > -1) {
-                $.msg($.name, '阅读请求重复，本次跳过');
-                return
-            } else if (startbodys.indexOf(startbodyVal) == -1) {
-                startbodys += "&" + startbodyVal
+        $.post(request, async (error, response, data) => {
+            try {
+                //$.log(data);
+                const result = JSON.parse(data)
+                $.log(`开始任务:${result.message}`);
+            } catch (e) {
+                $.log(e)
             }
-        } else {
-            startbodys = $request.body
-        }
-        $.setdata(startbodys, 'youth_start');
-        $.log("获取浏览赚请求: " + startbodyVal);
-        $.msg($.name, '获取浏览赚请求成功')
-    } else if ($request && $request.method != 'OPTIONS' && $request.url.match(/\/adlickstart\.json/)) {
-        seeVal = $request.body;
-        if (lookbodys) {
-            if (lookbodys.indexOf(seeVal) > -1) {
-                $.msg($.name, '阅读请求重复，本次跳过');
-                return
-            } else if (lookbodys.indexOf(seeVal) == -1) {
-                lookbodys += "&" + seeVal
-                $.msg($.name, '获取看看赚请求' + lookbodys.split("&").length + '成功')
+            resolve();
+        })
+    })
+}
+
+
+function adlickend() {
+    return new Promise((resolve, reject) => {
+        const url = "https://ios.baertt.com/v5/Nameless/adlickend.json";
+        const headers = {};
+        const body = Token;
+        const request = {
+            url: url,
+            headers: headers,
+            body: body
+        };
+
+        $.post(request, async (error, response, data) => {
+            try {
+                //$.log(data);
+                const result = JSON.parse(data)
+                $.log(`结束阅读:${result.message}`);
+                if (typeof result.items!='undefined'&&typeof result.items.task_score!='undefined')
+                    $.log(`本次任务获得青豆${result.items.task_score}`);
+                if (typeof result.items!='undefined'&&typeof result.items.score!='undefined')
+                    $.log(`本次任务获得青豆${result.items.score}`);
+            } catch (e) {
+                $.log(e)
             }
-        } else {
-            lookbodys = $request.body
-            $.msg($.name, '获取看看赚请求成功')
-        }
-        $.setdata(lookbodys, 'youth_look');
-        $.log("获取浏览赚请求: " + seeVal)
+            resolve();
+        })
+    })
+}
+
+
+function bannerstatus(i) {
+    return new Promise((resolve, reject) => {
+        const url = "https://ios.baertt.com/v5/Nameless/bannerstatus.json";
+        const headers = {};
+        const body = Token;
+        const request = {
+            url: url,
+            headers: headers,
+            body: body
+        };
+
+        $.post(request, async (error, response, data) => {
+            try {
+                //$.log(data);
+                const result = JSON.parse(data);
+                $.log(`完成第${i+1}次阅读:${result.message}`);
+            } catch (e) {
+                $.log(e)
+            }
+            resolve();
+        })
+    })
+}
+
+
+
+
+
+
+
+function adlickstart1() {
+    return new Promise((resolve, reject) => {
+        const url = "https://ios.baertt.com/v5/task/browse_start.json";
+        const headers = {};
+        const body = Token1;
+        const request = {
+            url: url,
+            headers: headers,
+            body: body
+        };
+
+        $.post(request, async (error, response, data) => {
+            try {
+                //$.log(data);
+                const result = JSON.parse(data)
+                $.log(`开始任务:${result.message}`);
+            } catch (e) {
+                $.log(e)
+            }
+            resolve();
+        })
+    })
+}
+
+
+function adlickend1() {
+    return new Promise((resolve, reject) => {
+        const url = "https://ios.baertt.com/v5/task/browse_start.json";
+        const headers = {};
+        const body = Token1;
+        const request = {
+            url: url,
+            headers: headers,
+            body: body
+        };
+
+        $.post(request, async (error, response, data) => {
+            try {
+                //$.log(data);
+                const result = JSON.parse(data)
+                $.log(`结束阅读:${result.message}`);
+                if (typeof result.items!='undefined'&&typeof result.items.task_score!='undefined')
+                    $.log(`本次任务获得青豆${result.items.task_score}`);
+                if (typeof result.items!='undefined'&&typeof result.items.score!='undefined')
+                    $.log(`本次任务获得青豆${result.items.score}`);
+            } catch (e) {
+                $.log(e)
+            }
+            resolve();
+        })
+    })
+}
+
+
+function bannerstatus1(i) {
+    return new Promise((resolve, reject) => {
+        const url = "https://ios.baertt.com/v5/task/browse_start.json";
+        const headers = {};
+        const body = Token1;
+        const request = {
+            url: url,
+            headers: headers,
+            body: body
+        };
+
+        $.post(request, async (error, response, data) => {
+            try {
+                //$.log(data);
+                const result = JSON.parse(data);
+                $.log(`完成第${i+1}次阅读:${result.message}`);
+            } catch (e) {
+                $.log(e)
+            }
+            resolve();
+        })
+    })
+}
+
+
+
+
+
+
+
+
+
+
+
+function randomNum(minNum, maxNum) {
+    switch (arguments.length) {
+        case 1:
+            return parseInt(Math.random() * minNum + 1, 10);
+            break;
+        case 2:
+            return parseInt(Math.random() * (maxNum - minNum + 1) + minNum, 10);
+            break;
+        default:
+            return 0;
+            break;
     }
 }
 
