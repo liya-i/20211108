@@ -4,7 +4,7 @@ $.idx = ($.idx = ($.getval('dsjSuffix') || '1') - 1) > 0 ? ($.idx + 1 + '') : ''
 ////const notify = //$.isNode() ? require("./sendNotify") : ``;
 //const COOKIE = //$.isNode() ? require("./dsjCOOKIE") : ``;
 const COOKIE = '';
-const logs = 1; // 0关闭日志，1原始日志，2格式化，3格式化且解码，
+const logs = 0; // 0关闭日志，1原始日志，2格式化，3格式化且解码，
 notifyttt = 1; // 0为关闭外部推送，1为12 23 点外部推送
 notifyInterval = 2; // 0为关闭通知，1为所有通知，2为12 23 点通知  ， 3为 6 12 18 23 点通知 
 Minutes = 10; // 通知 默认控制在0-10分内
