@@ -4,7 +4,7 @@ $.idx = ($.idx = ($.getval('dsjSuffix') || '1') - 1) > 0 ? ($.idx + 1 + '') : ''
 ////const notify = //$.isNode() ? require("./sendNotify") : ``;
 //const COOKIE = //$.isNode() ? require("./dsjCOOKIE") : ``;
 const COOKIE = '';
-const logs = 2; // 0关闭日志，1原始日志，2格式化，3格式化且解码，
+const logs = 1; // 0关闭日志，1原始日志，2格式化，3格式化且解码，
 notifyttt = 1; // 0为关闭外部推送，1为12 23 点外部推送
 notifyInterval = 2; // 0为关闭通知，1为所有通知，2为12 23 点通知  ， 3为 6 12 18 23 点通知 
 Minutes = 10; // 通知 默认控制在0-10分内
@@ -16,7 +16,7 @@ let middledsjHEADER = [];
 
 
 
-dsjheaderArr = ['{"Accept": "*/*","Accept-Encoding": "gzip, deflate","Accept-Language": "zh-Hans;q=1","AppVerCode": "236","AppVerName": "1.96","Authorization": "TmpKbFltSmtOR0ZoTTJNell6WTRZbUkwTnpSa04yWmlNV016WW1VMVlqZz18MTYyNTY2NjMxNjQ4MzQzOTEzN3wzMjUzYmE2NTNkMjBhMjUzYTZiMTg5MGE0NGNmM2VlYzZiY2JlYjk5","Cache-Control": "no-cache","Connection": "close","Generation": "com.dianshijia.mobile.ios","Host": "user.gaoqingdianshi.com","MarketChannelName": "Iphone","User-Agent": "Dsj/Client1.2","appId": "19227f89ea1a166451593601eb8a1b4f","areaCode": "420000","cityCode": "420900","countryCode": "CN","cuuid": "3612f9316166d5a162accea960c34881","erid": "61131","ethMac": "","gpsCityCode": "420900","hwBrand": "iPhone","hwMac": "","hwModel": "iPhone11,2","ispId": "","language": "zh_CN","routerMac": "e02481a23624","ssid": "f051e12e-b7d5-4381-84e8-e28c4f2ff5a9","userid": "62d5897fae73120cda6cae02e53f6739","uuid": "b963e558667e44ea908663230a232e82"}'
+dsjheaderArr = ['{"Accept": "*/*","Accept-Encoding": "gzip, deflate","Accept-Language": "zh-Hans;q=1","AppVerCode": "214","AppVerName": "1.96","Authorization": "TmpKbFltSmtOR0ZoTTJNell6WTRZbUkwTnpSa04yWmlNV016WW1VMVlqZz18MTYyNTY2NjMxNjQ4MzQzOTEzN3wzMjUzYmE2NTNkMjBhMjUzYTZiMTg5MGE0NGNmM2VlYzZiY2JlYjk5","Cache-Control": "no-cache","Connection": "close","Generation": "com.dianshijia.mobile.ios","Host": "hub.dianshihome.com","MarketChannelName": "Iphone","User-Agent": "Dsj/Client1.1","appId": "19227f89ea1a166451593601eb8a1b4f","areaCode": "440000","cityCode": "420300","countryCode": "CN","cuuid": "3612f9316166d5a162accea960c34881","erid": "50300","ethMac": "","gpsCityCode": "420900","hwBrand": "iPhone","hwMac": "","hwModel": "iPhone11,2","ispId": "","language": "zh_CN","routerMac": "","ssid": "41772524-c86b-4308-bdca-b37203243154","userid": "42acecc01e0ee935502109ec33f866a4","uuid": "7ba016d083c14b9eadb93d6961256c22"}'
 
             ]
 
