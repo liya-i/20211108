@@ -27,7 +27,7 @@ let Token1Arr = [
 async function all() {
     //nodejs运行
     for (let i = 0; i < TokenArr.length; i++) {
-        $.log(`\n准备第${i + 1}次任务`);
+        $.log(`\n准备第${i + 1}次看看赚任务`);
         Token = TokenArr[i];
         await adlickstart();
         await $.wait(randomNum(0, 2000));
@@ -44,8 +44,8 @@ async function all() {
 async function all1() {
     //nodejs运行
     for (let i = 0; i < Token1Arr.length; i++) {
-        $.log(`\n准备第${i + 1}次任务`);
-        Token = Token1Arr[i];
+        $.log(`\n准备第${i + 1}次浏览赚任务`);
+        Token1 = Token1Arr[i];
         await adlickstart1();
         await $.wait(randomNum(0, 2000));
         for (let i = 0; i < 6; i++) {
