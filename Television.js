@@ -1,7 +1,7 @@
 GXRZ = '7.29.11 修复额度选择'
 const $ = Env("电视家");
 $.idx = ($.idx = ($.getval('dsjSuffix') || '1') - 1) > 0 ? ($.idx + 1 + '') : ''; // 账号扩展字符
-////const notify = //$.isNode() ? require("./sendNotify") : ``;
+const notify = //$.isNode() ? require("./sendNotify") : ``;
 //const COOKIE = //$.isNode() ? require("./dsjCOOKIE") : ``;
 const COOKIE = '';
 const logs = 0; // 0关闭日志，1原始日志，2格式化，3格式化且解码，
