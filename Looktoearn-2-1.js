@@ -48,7 +48,7 @@ async function all1() {
         Token1 = Token1Arr[i];
         await adlickstart1();
         await $.wait(randomNum(0, 2000));
-        for (let i = 0; i = 1; i++) {
+        for (let i = 0; i < 1; i++) {
             await bannerstatus1(i);
             await $.wait(randomNum(0, 2000));
         }
