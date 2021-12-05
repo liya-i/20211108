@@ -85,7 +85,7 @@ console.log(`\n === 脚本执行 ${bjTime} ===\n`);
             await GainStart();
         }
         console.log(`-------------------------\n\n中青看点共完成${$.index}次任务，共计获得${gainscore}个青豆，浏览赚任务全部结束`);
-        $.msg("中青看点浏览赚", `共完成${$.index}次任务`+`  共计获得${gainscore}个青豆`);
+        //$.msg("中青看点浏览赚", `共完成${$.index}次任务`+`  共计获得${gainscore}个青豆`);
     }
     $.log(`\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n您共提供${lookArr.length}次看看赚任务\n`)
     if (lookArr.length !== 0) {
@@ -101,7 +101,7 @@ console.log(`\n === 脚本执行 ${bjTime} ===\n`);
         $.msg("中青看点看看赚", '共完成' + (lookArr.length + startArr.length) + '次任务，共计获得' + parseInt(lookscore + gainscore) + '个青豆');
     }
     if ($.isNode()) {
-        await notify.sendNotify(`共完成${$.index}次任务，\n共计获得${gainscore}个青豆`)
+        await notify.sendNotify("中青看点看看赚账号：Tarit", '\n共完成' + (lookArr.length + startArr.length) + '次任务，\n共计获得' + parseInt(lookscore + gainscore) + '个青豆')
     }
 })()
     .catch((e) => $.logErr(e))
