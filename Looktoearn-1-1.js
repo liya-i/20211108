@@ -1,7 +1,7 @@
 const $ = new Env("中青看点浏览赚&看看赚")
 const notify = $.isNode() ? require('./sendNotify') : '';
-let startArr = StartBody;
-let lookArr = LookBody;
+let startArr = ""
+let lookArr = "p=9NwGV8Ov71o%3DC5Jtxwc6iVuTcJotRQ4YI8A3NCwuYXT0l0K3C6TqScvYCre8kU2AZs_elygMTao74HcsUG20GyNw_DiF4Hp6jBpj-fbV2NnMMiV-kIE3MUIc7LsOpTjE3si6KH7VkrAfjyo38Ov3U0WeFwfmT1n-cHmPj201PiuCJSwiIlQFCwuI37_cRPyFDLVFZFUQrU0dfiZwso8FnSy-GjJWSVava32zLYNzYrRAXpRTMjsUO9G26_y9zQgyIpyl9pc_r6kBiowEVJtwT-uY16BE3vguio02WgQtOa_Owy0FHtrqyDy6bsIV_RVxCk7iTrZlIZDb6zOFcvWT5cKClBkn5uP9ON7x9DhnpuHT8JjdxHhKyYhgHT0CSNSKJ_wD2BsjI4p-Yltb9chFvO-iDQqczZspgiwh8MflUiBDqooTHWBMZA4UbtuFeRQI7Y74UO2IIpzoZRjz5truCWsPqr-y4OMj6Q%3D%3D"
 let gainscore = 0, lookscore = 0;
 //let StartBody = [],LookBody = [];
 //let startbodys = StartBody;
