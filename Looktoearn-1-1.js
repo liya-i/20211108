@@ -101,7 +101,7 @@ console.log(`\n === 脚本执行 ${bjTime} ===\n`);
         $.msg("中青看点看看赚", '共完成' + (lookArr.length + startArr.length) + '次任务，共计获得' + parseInt(lookscore + gainscore) + '个青豆');
     }
     if ($.isNode()) {
-        await notify.sendNotify("中青看点看看赚账号：Tarit", '\n共完成' + (lookArr.length + startArr.length) + '次任务，\n共计获得' + parseInt(lookscore + gainscore) + '个青豆')
+        await notify.sendNotify("中青看点看看赚账号：Tarit", '\n共完成' + (lookArr.length + startArr.length) + '次任务，共计获得999' + parseInt(lookscore + gainscore) + '个青豆')
     }
 })()
     .catch((e) => $.logErr(e))
