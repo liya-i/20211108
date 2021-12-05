@@ -98,7 +98,7 @@ function GainStart() {
         $.post(gainHost('task/browse_start.json', gainbody), async(error, resp, data) => {
             let startres = JSON.parse(data);
             if (startres.success == false) {
-                smbody = startArr.replace(gainbody + "&", "");
+                smbody = StartBody.replace(gainbody + "&", "");
                 $.setdata(smbody, 'youth_start');
                 $.log(startres.message + "已自动删除")
             } else {
@@ -121,7 +121,7 @@ function lookStart() {
         $.post(gainHost('Nameless/adlickstart.json', lookbody), async(error, resp, data) => {
             startlk = JSON.parse(data);
             if (startlk.success == false) {
-                smbody = lookArr.replace(lookbody + "&", "");
+                smbody = LookBody.replace(lookbody + "&", "");
                 $.setdata(smbody, 'youth_look');
                 $.log(startlk.message + "已自动删除")
             } else {
