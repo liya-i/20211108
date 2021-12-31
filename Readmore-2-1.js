@@ -12,7 +12,7 @@ let httpResult //global buffer
 let host = 'yuekandian.yichengw.cn'
 let hostname = 'https://' + host
 
-let yddCookie = 'eyJ0eXAiOiJKV1MiLCJhbGciOiJIUzUxMiJ9.eyJleHAiOjE5NTQyMjA5NzMsImlhdCI6MTYzODg2MDk3MywibmJmIjoxNjM4ODYwOTczLCJqdGkiOiI2MWFmMDhhZDZkNDMyIiwic3ViIjoxNjczNjIsImlzcyI6Imh0dHBzOlwvXC95dWVrYW5kaWFuLnlpY2hlbmd3LmNuIiwiYXVkIjoiaHR0cHM6XC9cL3l1ZWthbmRpYW4ueWljaGVuZ3cuY24ifQ.OWUxMmQ5MGNhMGEyNzY2MmIzZGYzY2ZhY2EzMGQ5ZjVlNzkyMzQ4NTUyMDljYzlkZTdiNTY2M2ZkNTI2ZmJjMjg3Mzg5NDM2MTZiMTc3ZjU4N2U4YWIyNzU2OTkwNDgxMjJkY2EyNjcwNWMyMTUyYjRiMGJlNjQ1MTkzZTNmZGY#5B1E31AC-9439-485F-A0A4-4D05ADF14FC6#CBD/3 CFNetwork/974.2.1 Darwin/18.0.0@eyJ0eXAiOiJKV1MiLCJhbGciOiJIUzUxMiJ9.eyJleHAiOjE5NTQyMjEwMjMsImlhdCI6MTYzODg2MTAyMywibmJmIjoxNjM4ODYxMDIzLCJqdGkiOiI2MWFmMDhkZjQ3Y2Q0Iiwic3ViIjoyNTI0NzMsImlzcyI6Imh0dHBzOlwvXC95dWVrYW5kaWFuLnlpY2hlbmd3LmNuIiwiYXVkIjoiaHR0cHM6XC9cL3l1ZWthbmRpYW4ueWljaGVuZ3cuY24ifQ.ZGU0ZTJlMWNhNjJmZTkxNmUwNWMxYjhhZTI4MzgwOTBkZDZkMWYwMTRmNjYyN2FjODk5YmY4ZjkyNmQ3YWFkY2I2YWFmY2EyZTgzYWRmMjQ2NmY0NzI4YzJhNmFjZTBkYzc4ZDBmOWYxYWVkNDAwNGVlNzAxZjA4OTlhNDgwZWU#666AB0FE-8955-4152-AC2D-0903B4D5B7C9#YKD/45'
+let yddCookie = 'eyJ0eXAiOiJKV1MiLCJhbGciOiJIUzUxMiJ9.eyJleHAiOjE5NTQyMjEwMjMsImlhdCI6MTYzODg2MTAyMywibmJmIjoxNjM4ODYxMDIzLCJqdGkiOiI2MWFmMDhkZjQ3Y2Q0Iiwic3ViIjoyNTI0NzMsImlzcyI6Imh0dHBzOlwvXC95dWVrYW5kaWFuLnlpY2hlbmd3LmNuIiwiYXVkIjoiaHR0cHM6XC9cL3l1ZWthbmRpYW4ueWljaGVuZ3cuY24ifQ.ZGU0ZTJlMWNhNjJmZTkxNmUwNWMxYjhhZTI4MzgwOTBkZDZkMWYwMTRmNjYyN2FjODk5YmY4ZjkyNmQ3YWFkY2I2YWFmY2EyZTgzYWRmMjQ2NmY0NzI4YzJhNmFjZTBkYzc4ZDBmOWYxYWVkNDAwNGVlNzAxZjA4OTlhNDgwZWU#666AB0FE-8955-4152-AC2D-0903B4D5B7C9#YKD/45'
 let yddCookieArr = []
 let userToken = []
 let userDevice = []
@@ -800,7 +800,7 @@ async function Withdraw(amount) {
     if(!result) return false
 
     if(result.code == 0) {
-        withdrawFlag[userIdx] = 1
+        withdrawFlag[userIdx] = 0
         console.log(`用户${userIdx+1}提现${amount}：${result.result.title}, ${result.result.message}`)
     } else {
         console.log(`用户${userIdx+1}提现${amount}失败：${result.message}`)
