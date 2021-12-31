@@ -1,10 +1,10 @@
-const $ = new Env('鏂囨梾鐪嬬偣');
+const $ = new Env('文旅看点');
 var request = require("request");
 var crypto = require("crypto");
 let status;
-status = (status = ($.getval("wlstatus") || "1") ) > 1 ? `${status}` : ""; // 璐﹀彿鎵╁睍瀛楃
+status = (status = ($.getval("wlstatus") || "1") ) > 1 ? `${status}` : ""; // 账号扩展字符
 let wlhdArr = [],wlcount = ''
-let wlhd= {"token":"a88a5df6b39648738f49790a6ae95433","userid":"604476a9c38c47debe229f64ccc0bd5d","smid":"D2MGVhuiztBgDbB4yN40ovKc1fDMjGc8yXI3K4ogTihCQXad"};
+let wlhd= '{"token":"a88a5df6b39648738f49790a6ae95433","userid":"604476a9c38c47debe229f64ccc0bd5d","smid":"D2MGVhuiztBgDbB4yN40ovKc1fDMjGc8yXI3K4ogTihCQXad"}'
 //let md5=$.isNode() ? require('./md5') : '';
 let wlhds = ""
 let Brand ='OPPO'
@@ -28,20 +28,20 @@ var timestamp = Math.round(new Date().getTime()/1000).toString();
           for (let i = 2; i <= wlcount; i++) {
             wlhdArr.push($.getdata(`wlhd${i}`))
             }
-    console.log(`------------- 鍏�${wlhdArr.length}涓处鍙�-------------\n`)
+    console.log(`------------- 共${wlhdArr.length}个账号-------------\n`)
       for (let i = 0; i < wlhdArr.length; i++) {
         if (wlhdArr[i]) {
           wlhd = wlhdArr[i];
           $.index = i + 1;
         
-          console.log(`\n寮€濮嬨€愭枃鏃呯湅鐐�${$.index}銆慲)
+          console.log(`\n开始【文旅看点${$.index}】`)
 
   }
 }
       }else  {
           if (process.env.wlhd && process.env.wlhd.indexOf('@') > -1) {
             wlhdArr = process.env.wlhd.split('@');
-            console.log(`鎮ㄩ€夋嫨鐨勬槸鐢�"@"闅斿紑\n`)
+            console.log(`您选择的是用"@"隔开\n`)
         } else {
             wlhds = [process.env.wlhd]
         };
@@ -50,13 +50,13 @@ var timestamp = Math.round(new Date().getTime()/1000).toString();
             wlhdArr.push(wlhds[item])
         }
     })
-          console.log(`鍏�${wlhdArr.length}涓猚ookie`)
+          console.log(`共${wlhdArr.length}个cookie`)
 	        for (let k = 0; k < wlhdArr.length; k++) {
                 $.message = ""
                 wlhd = wlhdArr[k]
                 $.index = k + 1;
  
-          console.log(`\n寮€濮嬨€愭枃鏃呯湅鐐�${$.index}銆慲)
+          console.log(`\n开始【文旅看点${$.index}】`)
           await sign()
           await signinfo()
 await my()
@@ -73,7 +73,7 @@ await hotinfo()
 }
 
 if ($.isNode() && allMessage) {
-        await notify.sendNotify(`鏂囨梾鐪嬬偣`, `${allMessage}` )
+        await notify.sendNotify(`文旅看点`, `${allMessage}` )
     }
       }
   }
@@ -92,7 +92,7 @@ if(wlhd)    $.setdata(wlhd,`wlhd${status}`)
 $.log(wlhd)
 //wlhd = wlhd.match(/loginToken=(.*?)&/)[1] 
 //$.log(wlhd)
-   $.msg($.name,"",'鏂囨梾鐪嬬偣'+`${status}` +'鏁版嵁鑾峰彇鎴愬姛锛�')
+   $.msg($.name,"",'文旅看点'+`${status}` +'数据获取成功！')
  
 }
 }
@@ -108,7 +108,7 @@ $.post(wl('account/getTodayDetail',hd), async (err, resp, data) => {
       try {
         if (err) {
           console.log(`${JSON.stringify(err)}`)
-          console.log(`${$.name} API璇锋眰澶辫触锛岃妫€鏌ョ綉璺噸璇昤)
+          console.log(`${$.name} API请求失败，请检查网路重试`)
         }// else {
           if (safeGet(data)) {
             data = JSON.parse(data);
@@ -147,7 +147,7 @@ $.post(wl('activity/redpacket/activityRedPacketData',hd), async (err, resp, data
       try {
         if (err) {
           console.log(`${JSON.stringify(err)}`)
-          console.log(`${$.name} API璇锋眰澶辫触锛岃妫€鏌ョ綉璺噸璇昤)
+          console.log(`${$.name} API请求失败，请检查网路重试`)
         }// else {
           if (safeGet(data)) {
             data = JSON.parse(data);
@@ -156,10 +156,10 @@ $.post(wl('activity/redpacket/activityRedPacketData',hd), async (err, resp, data
             for(let i= 0;i<redPacksStatusList.length;i++){
              status = redPacksStatusList[i].status
              if(status == 1){
-              console.log('鏂版墜绂忓埄宸查锛�'+redPacksStatusList[i].money)   
+              console.log('新手福利已领：'+redPacksStatusList[i].money)   
              }else 
              if(status == 0){
-              console.log('鏂版墜绂忓埄鏈锛�'+redPacksStatusList[i].money)   
+              console.log('新手福利未领：'+redPacksStatusList[i].money)   
              }
             }
              }
@@ -188,7 +188,7 @@ $.post(wl('activity/redpacket/receiveRedPacket',hd), async (err, resp, data) => 
       try {
         if (err) {
           console.log(`${JSON.stringify(err)}`)
-          console.log(`${$.name} API璇锋眰澶辫触锛岃妫€鏌ョ綉璺噸璇昤)
+          console.log(`${$.name} API请求失败，请检查网路重试`)
         }// else {
           if (safeGet(data)) {
             data = JSON.parse(data);
@@ -220,12 +220,12 @@ $.post(wlread('article/read',hd,md5('bKZ7WjF370'+token+Brand+Model+timestamp+'bK
       try {
         if (err) {
           console.log(`${JSON.stringify(err)}`)
-          console.log(`${$.name} API璇锋眰澶辫触锛岃妫€鏌ョ綉璺噸璇昤)
+          console.log(`${$.name} API请求失败，请检查网路重试`)
         }// else {
           if (safeGet(data)) {
             data = JSON.parse(data);
              if(data.ret_code==1){
-           console.log('鑾峰緱: '+data.profit+' 绾㈣眴')
+           console.log('获得: '+data.profit+' 红豆')
              }
              }else if(data.ret_code==0){
              console.log(data.msg_desc)
@@ -255,12 +255,12 @@ $.post(wlread('article/read',hd,md5('bKZ7WjF370'+token+Brand+Model+timestamp+'bK
       try {
         if (err) {
           console.log(`${JSON.stringify(err)}`)
-          console.log(`${$.name} API璇锋眰澶辫触锛岃妫€鏌ョ綉璺噸璇昤)
+          console.log(`${$.name} API请求失败，请检查网路重试`)
         }// else {
           if (safeGet(data)) {
             data = JSON.parse(data);
              if(data.ret_code==1){
-           console.log('video鑾峰緱: '+data.profit+' 绾㈣眴')
+           console.log('video获得: '+data.profit+' 红豆')
              }
              }else if(data.ret_code==0){
              console.log(data.msg_desc)
@@ -281,13 +281,13 @@ function box() {
    hds =  JSON.parse(wlhd)
    token =  hds.token
    userid = hds.userid
-  hd = `{"userid":"${userid}","device_userid":null,"sysname":"wlkd","appversioncode":"206","appversion":"2.0.6","brand":null,"model":null,"token":"${token}","channel":"SC_OPPO_A","optime":${timestamp},"skey":"${randomString(32)}","adv_provider":null,"os":"android","osversion":"10","darkmode":1,"threadid":null,"spread":null,"from":null,"remarks":null,"ip":null,"province":null,"city":null,"hour":null,"date":null,"time":null,"requestid":null,"event":"click","postion":"in","logtype":"inmobile","scene":"浠诲姟涓績_鏂版墜绂忓埄绾㈠寘","evtvalue":0}`
+  hd = `{"userid":"${userid}","device_userid":null,"sysname":"wlkd","appversioncode":"206","appversion":"2.0.6","brand":null,"model":null,"token":"${token}","channel":"SC_OPPO_A","optime":${timestamp},"skey":"${randomString(32)}","adv_provider":null,"os":"android","osversion":"10","darkmode":1,"threadid":null,"spread":null,"from":null,"remarks":null,"ip":null,"province":null,"city":null,"hour":null,"date":null,"time":null,"requestid":null,"event":"click","postion":"in","logtype":"inmobile","scene":"任务中心_新手福利红包","evtvalue":0}`
 $.post(wl('task/box/init',hd), async (err, resp, data) => {
        
       try {
         if (err) {
           console.log(`${JSON.stringify(err)}`)
-          console.log(`${$.name} API璇锋眰澶辫触锛岃妫€鏌ョ綉璺噸璇昤)
+          console.log(`${$.name} API请求失败，请检查网路重试`)
         }// else {
           if (safeGet(data)) {
             data = JSON.parse(data);
@@ -300,10 +300,10 @@ $.post(wl('task/box/init',hd), async (err, resp, data) => {
             for(let i= 0;i<taskboxs.length;i++){
              status = taskboxs[i].box_status
              if(status == 2){
-              console.log('鏂版墜瀹濈宸查锛�'+taskboxs[i]['box_profit'])   
+              console.log('新手宝箱已领：'+taskboxs[i]['box_profit'])   
              }else 
              if(status == 0){
-              console.log('鏂版墜瀹濈鏈锛�'+taskboxs[i]['box_profit'])   
+              console.log('新手宝箱未领：'+taskboxs[i]['box_profit'])   
              }
              if(status == 1){
               await boxprofit('taskbox_one') 
@@ -340,14 +340,14 @@ $.post(wl('task/box/profit',hd), async (err, resp, data) => {
       try {
         if (err) {
           console.log(`${JSON.stringify(err)}`)
-          console.log(`${$.name} API璇锋眰澶辫触锛岃妫€鏌ョ綉璺噸璇昤)
+          console.log(`${$.name} API请求失败，请检查网路重试`)
         }// else {
           if (safeGet(data)) {
             data = JSON.parse(data);
              if(data.ret_code==1){
               
                
-               console.log('box锛�'+data.profit) 
+               console.log('box：'+data.profit) 
               
              }
              }else if(data.ret_code==0){
@@ -375,14 +375,14 @@ $.post(wl('usersign/sign',hd), async (err, resp, data) => {
       try {
         if (err) {
           console.log(`${JSON.stringify(err)}`)
-          console.log(`${$.name} API璇锋眰澶辫触锛岃妫€鏌ョ綉璺噸璇昤)
+          console.log(`${$.name} API请求失败，请检查网路重试`)
         }// else {
           if (safeGet(data)) {
             data = JSON.parse(data);
              if(data.ret_code==1){
               if(data.signstatus==1) {
                
-               console.log('绛惧埌锛�'+data.profit) 
+               console.log('签到：'+data.profit) 
               }
              }
              //}
@@ -412,14 +412,14 @@ $.post(wl('usersign/info',hd), async (err, resp, data) => {
       try {
         if (err) {
           console.log(`${JSON.stringify(err)}`)
-          console.log(`${$.name} API璇锋眰澶辫触锛岃妫€鏌ョ綉璺噸璇昤)
+          console.log(`${$.name} API请求失败，请检查网路重试`)
         }// else {
           if (safeGet(data)) {
             data = JSON.parse(data);
              if(data.ret_code==1){
               if(data.signstatus==1) {
                console.log(data.signbutton) 
-               console.log('鏄庢棩绛惧埌锛�'+data.signmoney) 
+               console.log('明日签到：'+data.signmoney) 
               }
              }
              }else if(data.ret_code==0){
@@ -447,7 +447,7 @@ $.post(wl('task/inread/info',hd), async (err, resp, data) => {
       try {
         if (err) {
           console.log(`${JSON.stringify(err)}`)
-          console.log(`${$.name} API璇锋眰澶辫触锛岃妫€鏌ョ綉璺噸璇昤)
+          console.log(`${$.name} API请求失败，请检查网路重试`)
         }// else {
           if (safeGet(data)) {
             data = JSON.parse(data);
@@ -489,7 +489,7 @@ $.post(wl('task/inread/account',hd), async (err, resp, data) => {
       try {
         if (err) {
           console.log(`${JSON.stringify(err)}`)
-          console.log(`${$.name} API璇锋眰澶辫触锛岃妫€鏌ョ綉璺噸璇昤)
+          console.log(`${$.name} API请求失败，请检查网路重试`)
         }// else {
           if (safeGet(data)) {
             data = JSON.parse(data);
@@ -526,7 +526,7 @@ $.post(wlread('article/list',hd,md5('bKZ7WjF370'+token+Brand+Model+timestamp+'bK
       try {
         if (err) {
           console.log(`${JSON.stringify(err)}`)
-          console.log(`${$.name} API璇锋眰澶辫触锛岃妫€鏌ョ綉璺噸璇昤)
+          console.log(`${$.name} API请求失败，请检查网路重试`)
         }// else {
           if (safeGet(data)) {
             data = JSON.parse(data);
@@ -570,7 +570,7 @@ $.post(wlread('article/list',hd,md5('bKZ7WjF370'+token+Brand+Model+timestamp+'bK
       try {
         if (err) {
           console.log(`${JSON.stringify(err)}`)
-          console.log(`${$.name} API璇锋眰澶辫触锛岃妫€鏌ョ綉璺噸璇昤)
+          console.log(`${$.name} API请求失败，请检查网路重试`)
         }// else {
           if (safeGet(data)) {
             data = JSON.parse(data);
@@ -614,7 +614,7 @@ $.post(wlread('share/info',hd,md5('bKZ7WjF370'+token+Brand+Model+timestamp+'bKZ7
       try {
         if (err) {
           console.log(`${JSON.stringify(err)}`)
-          console.log(`${$.name} API璇锋眰澶辫触锛岃妫€鏌ョ綉璺噸璇昤)
+          console.log(`${$.name} API请求失败，请检查网路重试`)
         }// else {
           if (safeGet(data)) {
             data = JSON.parse(data);
@@ -650,7 +650,7 @@ $.post(wlread('hottask/info',hd,md5('bKZ7WjF370'+token+Brand+Model+timestamp+'bK
       try {
         if (err) {
           console.log(`${JSON.stringify(err)}`)
-          console.log(`${$.name} API璇锋眰澶辫触锛岃妫€鏌ョ綉璺噸璇昤)
+          console.log(`${$.name} API请求失败，请检查网路重试`)
         }// else {
           if (safeGet(data)) {
             data = JSON.parse(data);
@@ -690,7 +690,7 @@ $.post(wlread('hottask/profit',hd,md5('bKZ7WjF370'+token+Brand+Model+timestamp+'
       try {
         if (err) {
           console.log(`${JSON.stringify(err)}`)
-          console.log(`${$.name} API璇锋眰澶辫触锛岃妫€鏌ョ綉璺噸璇昤)
+          console.log(`${$.name} API请求失败，请检查网路重试`)
         }// else {
           if (safeGet(data)) {
             data = JSON.parse(data);
@@ -772,7 +772,7 @@ function safeGet(data) {
     }
   } catch (e) {
     console.log(e);
-    console.log(`浜笢鏈嶅姟鍣ㄨ闂暟鎹负绌猴紝璇锋鏌ヨ嚜韬澶囩綉缁滄儏鍐礰);
+    console.log(`京东服务器访问数据为空，请检查自身设备网络情况`);
     return false;
   }
 }
@@ -782,7 +782,7 @@ function jsonParse(str) {
       return JSON.parse(str);
     } catch (e) {
       console.log(e);
-      $.msg($.name, '', '璇峰嬁闅忔剰鍦˙oxJs杈撳叆妗嗕慨鏀瑰唴瀹筡n寤鸿閫氳繃鑴氭湰鍘昏幏鍙朿ookie')
+      $.msg($.name, '', '请勿随意在BoxJs输入框修改内容\n建议通过脚本去获取cookie')
       return [];
     }
   }
