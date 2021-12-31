@@ -1,5 +1,5 @@
 const $ = new Env('文旅看点');
-var request = require("request");
+//var request = require("request");
 var crypto = require("crypto");
 let status;
 status = (status = ($.getval("wlstatus") || "1") ) > 1 ? `${status}` : ""; // 账号扩展字符
