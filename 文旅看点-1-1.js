@@ -4,7 +4,7 @@ var crypto = require("crypto");
 let status;
 status = (status = ($.getval("wlstatus") || "1") ) > 1 ? `${status}` : ""; // 账号扩展字符
 let wlhdArr = [],wlcount = ''
-let wlhd= ''
+let wlhd= $.isNode() ? (process.env.wlhd ? process.env.wlhd : "") : ($.getdata('wlhd') ? $.getdata('wlhd') : "")
 //let md5=$.isNode() ? require('./md5') : '';
 let wlhds = ""
 let Brand ='OPPO'
@@ -100,9 +100,9 @@ $.log(wlhd)
 function my() {
  return new Promise((resolve) => {
    hds =  JSON.parse(wlhd)
-   token = 'a88a5df6b39648738f49790a6ae95433'
-   userid = '604476a9c38c47debe229f64ccc0bd5d'
-  hd = `{"token":"${token}","userid":"${userid}","sysname":"wlkd"}`
+   token =  hds.token
+   userid = hds.userid
+  hd = `{"token":"a88a5df6b39648738f49790a6ae95433","userid":"604476a9c38c47debe229f64ccc0bd5d","sysname":"wlkd"}`
 $.post(wl('account/getTodayDetail',hd), async (err, resp, data) => {
        
       try {
@@ -139,9 +139,9 @@ $.post(wl('account/getTodayDetail',hd), async (err, resp, data) => {
 function redpacket() {
  return new Promise((resolve) => {
    hds =  JSON.parse(wlhd)
-   token = 'a88a5df6b39648738f49790a6ae95433'
-   userid = '604476a9c38c47debe229f64ccc0bd5d'
-  hd = `{"token":"${token}","userid":"${userid}","sysname":"wlkd"}`
+   token =  hds.token
+   userid = hds.userid
+  hd = `{"token":"a88a5df6b39648738f49790a6ae95433","userid":"604476a9c38c47debe229f64ccc0bd5d","sysname":"wlkd"}`
 $.post(wl('activity/redpacket/activityRedPacketData',hd), async (err, resp, data) => {
        
       try {
@@ -180,9 +180,9 @@ $.post(wl('activity/redpacket/activityRedPacketData',hd), async (err, resp, data
 function receiveRedPacket() {
  return new Promise((resolve) => {
    hds =  JSON.parse(wlhd)
-   token = 'a88a5df6b39648738f49790a6ae95433'
-   userid = '604476a9c38c47debe229f64ccc0bd5d'
-  hd = `{"token":"${token}","userid":"${userid}","sysname":"wlkd"}`
+   token =  hds.token
+   userid = hds.userid
+  hd = `{"token":"a88a5df6b39648738f49790a6ae95433","userid":"604476a9c38c47debe229f64ccc0bd5d","sysname":"wlkd"}`
 $.post(wl('activity/redpacket/receiveRedPacket',hd), async (err, resp, data) => {
        
       try {
@@ -212,9 +212,9 @@ $.post(wl('activity/redpacket/receiveRedPacket',hd), async (err, resp, data) => 
 function read(artId) {
  return new Promise((resolve) => {
    hds =  JSON.parse(wlhd)
-   token = 'a88a5df6b39648738f49790a6ae95433'
-   userid = '604476a9c38c47debe229f64ccc0bd5d'
-  hd = `{"artClassify":0,"artId":"${artId}","sensorX":"-0.030284943","sensorY":"-0.01947778","sensorZ":"-0.038542245","appversion":"2.0.6","appversioncode":"206","brand":"OPPO","channel":"SC_OPPO_A","darkmode":1,"device_userid":"","imei":"","model":"PCAM00","oaid":"-1","optime":${timestamp},"os":"android","osversion":"10","osversioncode":"29","smid":"${smid}","sysname":"wlkd","token":"${token}","userid":"${userid}"}`
+   token =  hds.token
+   userid = hds.userid
+  hd = `{"artClassify":0,"artId":"${artId}","sensorX":"-0.030284943","sensorY":"-0.01947778","sensorZ":"-0.038542245","appversion":"2.0.6","appversioncode":"206","brand":"OPPO","channel":"SC_OPPO_A","darkmode":1,"device_userid":"","imei":"","model":"PCAM00","oaid":"-1","optime":${timestamp},"os":"android","osversion":"10","osversioncode":"29","smid":"D2MGVhuiztBgDbB4yN40ovKc1fDMjGc8yXI3K4ogTihCQXad","sysname":"wlkd","token":"a88a5df6b39648738f49790a6ae95433","userid":"604476a9c38c47debe229f64ccc0bd5d"}`
 $.post(wlread('article/read',hd,md5('bKZ7WjF370'+token+Brand+Model+timestamp+'bKZ7WjF370')), async (err, resp, data) => {
        
       try {
@@ -244,10 +244,10 @@ $.post(wlread('article/read',hd,md5('bKZ7WjF370'+token+Brand+Model+timestamp+'bK
 function video(artId) {
  return new Promise((resolve) => {
    hds =  JSON.parse(wlhd)
-   token = 'a88a5df6b39648738f49790a6ae95433'
-   userid = '604476a9c38c47debe229f64ccc0bd5d'
+   token =  hds.token
+   userid = hds.userid
  
-   hd =`{"artClassify":1,"artId":"${artId}","sensorX":"-0.019769112","sensorY":"-0.006024654","sensorZ":"-0.0070554875","appversion":"2.0.6","appversioncode":"206","brand":"OPPO","channel":"SC_OPPO_A","darkmode":1,"device_userid":"","imei":"","model":"PCAM00","oaid":"","optime":${timestamp},"os":"android","osversion":"10","osversioncode":"29","smid":"${smid}","sysname":"wlkd","token":"${token}","userid":"${userid}"}`,
+   hd =`{"artClassify":1,"artId":"${artId}","sensorX":"-0.019769112","sensorY":"-0.006024654","sensorZ":"-0.0070554875","appversion":"2.0.6","appversioncode":"206","brand":"OPPO","channel":"SC_OPPO_A","darkmode":1,"device_userid":"","imei":"","model":"PCAM00","oaid":"","optime":${timestamp},"os":"android","osversion":"10","osversioncode":"29","smid":"D2MGVhuiztBgDbB4yN40ovKc1fDMjGc8yXI3K4ogTihCQXad","sysname":"wlkd","token":"a88a5df6b39648738f49790a6ae95433","userid":"604476a9c38c47debe229f64ccc0bd5d"}`,
   
   
 $.post(wlread('article/read',hd,md5('bKZ7WjF370'+token+Brand+Model+timestamp+'bKZ7WjF370')), async (err, resp, data) => {
@@ -279,9 +279,9 @@ $.post(wlread('article/read',hd,md5('bKZ7WjF370'+token+Brand+Model+timestamp+'bK
 function box() {
  return new Promise((resolve) => {
    hds =  JSON.parse(wlhd)
-   token = 'a88a5df6b39648738f49790a6ae95433'
-   userid = '604476a9c38c47debe229f64ccc0bd5d'
-  hd = `{"userid":"${userid}","device_userid":null,"sysname":"wlkd","appversioncode":"206","appversion":"2.0.6","brand":null,"model":null,"token":"${token}","channel":"SC_OPPO_A","optime":${timestamp},"skey":"${randomString(32)}","adv_provider":null,"os":"android","osversion":"10","darkmode":1,"threadid":null,"spread":null,"from":null,"remarks":null,"ip":null,"province":null,"city":null,"hour":null,"date":null,"time":null,"requestid":null,"event":"click","postion":"in","logtype":"inmobile","scene":"任务中心_新手福利红包","evtvalue":0}`
+   token =  hds.token
+   userid = hds.userid
+  hd = `{"userid":"604476a9c38c47debe229f64ccc0bd5d","device_userid":null,"sysname":"wlkd","appversioncode":"206","appversion":"2.0.6","brand":null,"model":null,"token":"a88a5df6b39648738f49790a6ae95433","channel":"SC_OPPO_A","optime":${timestamp},"skey":"${randomString(32)}","adv_provider":null,"os":"android","osversion":"10","darkmode":1,"threadid":null,"spread":null,"from":null,"remarks":null,"ip":null,"province":null,"city":null,"hour":null,"date":null,"time":null,"requestid":null,"event":"click","postion":"in","logtype":"inmobile","scene":"任务中心_新手福利红包","evtvalue":0}`
 $.post(wl('task/box/init',hd), async (err, resp, data) => {
        
       try {
@@ -332,9 +332,9 @@ $.post(wl('task/box/init',hd), async (err, resp, data) => {
 function boxprofit(box_code) {
  return new Promise((resolve) => {
    hds =  JSON.parse(wlhd)
-   token = 'a88a5df6b39648738f49790a6ae95433'
-   userid = '604476a9c38c47debe229f64ccc0bd5d'
-  hd = `{"userid":"${userid}","device_userid":null,"sysname":"wlkd","appversioncode":"206","appversion":"2.0.6","brand":null,"model":null,"token":"${token}","channel":"SC_OPPO_A","optime":${timestamp},"skey":"1","adv_provider":null,"os":"android","osversion":"10","darkmode":1,"threadid":null,"spread":null,"from":null,"remarks":null,"ip":null,"province":null,"city":null,"hour":null,"date":null,"time":null,"requestid":null,"event":null,"box_code":"${box_code}"}`
+   token =  hds.token
+   userid = hds.userid
+  hd = `{"userid":"604476a9c38c47debe229f64ccc0bd5d","device_userid":null,"sysname":"wlkd","appversioncode":"206","appversion":"2.0.6","brand":null,"model":null,"token":"a88a5df6b39648738f49790a6ae95433","channel":"SC_OPPO_A","optime":${timestamp},"skey":"1","adv_provider":null,"os":"android","osversion":"10","darkmode":1,"threadid":null,"spread":null,"from":null,"remarks":null,"ip":null,"province":null,"city":null,"hour":null,"date":null,"time":null,"requestid":null,"event":null,"box_code":"${box_code}"}`
 $.post(wl('task/box/profit',hd), async (err, resp, data) => {
        
       try {
@@ -367,9 +367,9 @@ $.post(wl('task/box/profit',hd), async (err, resp, data) => {
 function sign() {
  return new Promise((resolve) => {
    hds =  JSON.parse(wlhd)
-   token = 'a88a5df6b39648738f49790a6ae95433'
-   userid = '604476a9c38c47debe229f64ccc0bd5d'
-  hd = `{"token":"${token}","userid":"${userid}","sysname":"wlkd"}`
+   token =  hds.token
+   userid = hds.userid
+  hd = `{"token":"a88a5df6b39648738f49790a6ae95433","userid":"604476a9c38c47debe229f64ccc0bd5d","sysname":"wlkd"}`
 $.post(wl('usersign/sign',hd), async (err, resp, data) => {
        
       try {
@@ -404,9 +404,9 @@ $.post(wl('usersign/sign',hd), async (err, resp, data) => {
 function signinfo() {
  return new Promise((resolve) => {
    hds =  JSON.parse(wlhd)
-   token = 'a88a5df6b39648738f49790a6ae95433'
-   userid = '604476a9c38c47debe229f64ccc0bd5d'
-  hd = `{"token":"${token}","userid":"${userid}","sysname":"wlkd"}`
+   token =  hds.token
+   userid = hds.userid
+  hd = `{"token":"a88a5df6b39648738f49790a6ae95433","userid":"604476a9c38c47debe229f64ccc0bd5d","sysname":"wlkd"}`
 $.post(wl('usersign/info',hd), async (err, resp, data) => {
        
       try {
@@ -439,9 +439,9 @@ $.post(wl('usersign/info',hd), async (err, resp, data) => {
 function taskinfo() {
  return new Promise((resolve) => {
    hds =  JSON.parse(wlhd)
-   token = 'a88a5df6b39648738f49790a6ae95433'
-   userid = '604476a9c38c47debe229f64ccc0bd5d'
-  hd = `{"token":"${token}","sysname":"wlkd"}`
+   token =  hds.token
+   userid = hds.userid
+  hd = `{"token":"a88a5df6b39648738f49790a6ae95433","sysname":"wlkd"}`
 $.post(wl('task/inread/info',hd), async (err, resp, data) => {
       //console.log(data)  
       try {
@@ -481,9 +481,9 @@ $.post(wl('task/inread/info',hd), async (err, resp, data) => {
 function task(taskid) {
  return new Promise((resolve) => {
    hds =  JSON.parse(wlhd)
-   token = 'a88a5df6b39648738f49790a6ae95433'
-   userid = '604476a9c38c47debe229f64ccc0bd5d'
-  hd = `{"token":"${token}","taskid":"${taskid}","sysname":"wlkd"}`
+   token =  hds.token
+   userid = hds.userid
+  hd = `{"token":"a88a5df6b39648738f49790a6ae95433","taskid":"${taskid}","sysname":"wlkd"}`
 $.post(wl('task/inread/account',hd), async (err, resp, data) => {
        //console.log(data)
       try {
@@ -516,11 +516,11 @@ $.post(wl('task/inread/account',hd), async (err, resp, data) => {
 function articlelist() {
  return new Promise((resolve) => {
    hds =  JSON.parse(wlhd)
-   token = 'a88a5df6b39648738f49790a6ae95433'
-   userid = '604476a9c38c47debe229f64ccc0bd5d'
+   token =  hds.token
+   userid = hds.userid
    oaid = hds.oaid
-   smid = 'D2MGVhuiztBgDbB4yN40ovKc1fDMjGc8yXI3K4ogTihCQXad'
-  hd = `{"classify":0,"pageNo":1,"pullAction":"footer","sceneType":"taskshare","typeid":"36","appversion":"2.0.6","appversioncode":"206","brand":"OPPO","channel":"SC_OPPO_A","darkmode":1,"device_userid":"","imei":"","model":"PCAM00","oaid":"-1","optime":${timestamp},"os":"android","osversion":"10","osversioncode":"29","smid":"${smid}","sysname":"wlkd","token":"${token}","userid":"${userid}"}`
+   smid = hds.smid
+  hd = `{"classify":0,"pageNo":1,"pullAction":"footer","sceneType":"taskshare","typeid":"36","appversion":"2.0.6","appversioncode":"206","brand":"OPPO","channel":"SC_OPPO_A","darkmode":1,"device_userid":"","imei":"","model":"PCAM00","oaid":"-1","optime":${timestamp},"os":"android","osversion":"10","osversioncode":"29","smid":"D2MGVhuiztBgDbB4yN40ovKc1fDMjGc8yXI3K4ogTihCQXad","sysname":"wlkd","token":"a88a5df6b39648738f49790a6ae95433","userid":"604476a9c38c47debe229f64ccc0bd5d"}`
 $.post(wlread('article/list',hd,md5('bKZ7WjF370'+token+Brand+Model+timestamp+'bKZ7WjF370')), async (err, resp, data) => {
        //console.log(data)
       try {
@@ -559,12 +559,12 @@ $.post(wlread('article/list',hd,md5('bKZ7WjF370'+token+Brand+Model+timestamp+'bK
 function videolist() {
  return new Promise((resolve) => {
    hds =  JSON.parse(wlhd)
-   token = 'a88a5df6b39648738f49790a6ae95433'
-   userid = '604476a9c38c47debe229f64ccc0bd5d'
+   token =  hds.token
+   userid = hds.userid
    oaid = hds.oaid
-   smid = 'D2MGVhuiztBgDbB4yN40ovKc1fDMjGc8yXI3K4ogTihCQXad'
+   smid = hds.smid
    
-  hd = `{"classify":1,"pageNo":1,"pullAction":"footer","sceneType":"list","typeid":"56","appversion":"2.0.6","appversioncode":"206","brand":"OPPO","channel":"SC_OPPO_A","darkmode":1,"device_userid":"","imei":"","model":"PCAM00","oaid":"","optime":${timestamp},"os":"android","osversion":"10","osversioncode":"29","smid":"${smid}","sysname":"wlkd","token":"${token}","userid":"${userid}"}`
+  hd = `{"classify":1,"pageNo":1,"pullAction":"footer","sceneType":"list","typeid":"56","appversion":"2.0.6","appversioncode":"206","brand":"OPPO","channel":"SC_OPPO_A","darkmode":1,"device_userid":"","imei":"","model":"PCAM00","oaid":"","optime":${timestamp},"os":"android","osversion":"10","osversioncode":"29","smid":"D2MGVhuiztBgDbB4yN40ovKc1fDMjGc8yXI3K4ogTihCQXad","sysname":"wlkd","token":"a88a5df6b39648738f49790a6ae95433","userid":"604476a9c38c47debe229f64ccc0bd5d"}`
 $.post(wlread('article/list',hd,md5('bKZ7WjF370'+token+Brand+Model+timestamp+'bKZ7WjF370')), async (err, resp, data) => {
       // console.log(data)
       try {
@@ -604,11 +604,11 @@ $.post(wlread('article/list',hd,md5('bKZ7WjF370'+token+Brand+Model+timestamp+'bK
 function share(shareArtId,shareExtra) {
  return new Promise((resolve) => {
    hds =  JSON.parse(wlhd)
-   token = 'a88a5df6b39648738f49790a6ae95433'
-   userid = '604476a9c38c47debe229f64ccc0bd5d'
+   token =  hds.token
+   userid = hds.userid
    oaid = hds.oaid
-   smid = 'D2MGVhuiztBgDbB4yN40ovKc1fDMjGc8yXI3K4ogTihCQXad'
-  hd = `{"artClassify":0,"artTypeId":"36","shareArtId":"${shareArtId}","shareEntry":"list","shareExtra":"${shareExtra}","sharePackage":"","shareTarget":"timeline","shareType":"article","appversion":"2.0.6","appversioncode":"206","brand":"OPPO","channel":"SC_OPPO_A","darkmode":1,"device_userid":"","imei":"","model":"PCAM00","oaid":"-1","optime":${timestamp},"os":"android","osversion":"10","osversioncode":"29","smid":"${smid}","sysname":"wlkd","token":"${token}","userid":"${userid}"}`
+   smid = hds.smid
+  hd = `{"artClassify":0,"artTypeId":"36","shareArtId":"${shareArtId}","shareEntry":"list","shareExtra":"${shareExtra}","sharePackage":"","shareTarget":"timeline","shareType":"article","appversion":"2.0.6","appversioncode":"206","brand":"OPPO","channel":"SC_OPPO_A","darkmode":1,"device_userid":"","imei":"","model":"PCAM00","oaid":"-1","optime":${timestamp},"os":"android","osversion":"10","osversioncode":"29","smid":"D2MGVhuiztBgDbB4yN40ovKc1fDMjGc8yXI3K4ogTihCQXad","sysname":"wlkd","token":"a88a5df6b39648738f49790a6ae95433","userid":"604476a9c38c47debe229f64ccc0bd5d"}`
 $.post(wlread('share/info',hd,md5('bKZ7WjF370'+token+Brand+Model+timestamp+'bKZ7WjF370')), async (err, resp, data) => {
       //console.log(data)  
       try {
@@ -639,12 +639,12 @@ $.post(wlread('share/info',hd,md5('bKZ7WjF370'+token+Brand+Model+timestamp+'bKZ7
 function hotinfo() {
  return new Promise((resolve) => {
    hds =  JSON.parse(wlhd)
-   token = 'a88a5df6b39648738f49790a6ae95433'
-   userid = '604476a9c38c47debe229f64ccc0bd5d'
+   token =  hds.token
+   userid = hds.userid
    oaid = hds.oaid
-   smid = 'D2MGVhuiztBgDbB4yN40ovKc1fDMjGc8yXI3K4ogTihCQXad'
+   smid = hds.smid
    
-  hd = `{"appversion":"2.0.6","appversioncode":"206","brand":"OPPO","channel":"SC_OPPO_A","darkmode":1,"device_userid":"","imei":"","model":"PCAM00","oaid":"","optime":${timestamp},"os":"android","osversion":"10","osversioncode":"29","smid":"${smid}","sysname":"wlkd","token":"${token}","userid":"${userid}"}`
+  hd = `{"appversion":"2.0.6","appversioncode":"206","brand":"OPPO","channel":"SC_OPPO_A","darkmode":1,"device_userid":"","imei":"","model":"PCAM00","oaid":"","optime":${timestamp},"os":"android","osversion":"10","osversioncode":"29","smid":"D2MGVhuiztBgDbB4yN40ovKc1fDMjGc8yXI3K4ogTihCQXad","sysname":"wlkd","token":"a88a5df6b39648738f49790a6ae95433","userid":"604476a9c38c47debe229f64ccc0bd5d"}`
 $.post(wlread('hottask/info',hd,md5('bKZ7WjF370'+token+Brand+Model+timestamp+'bKZ7WjF370')), async (err, resp, data) => {
        
       try {
@@ -679,12 +679,12 @@ $.post(wlread('hottask/info',hd,md5('bKZ7WjF370'+token+Brand+Model+timestamp+'bK
 function hottask(act_type) {
  return new Promise((resolve) => {
    hds =  JSON.parse(wlhd)
-   token = 'a88a5df6b39648738f49790a6ae95433'
-   userid = '604476a9c38c47debe229f64ccc0bd5d'
+   token =  hds.token
+   userid = hds.userid
    oaid = hds.oaid
-   smid = 'D2MGVhuiztBgDbB4yN40ovKc1fDMjGc8yXI3K4ogTihCQXad'
+   smid = hds.smid
    
-  hd = `{"act_type":"${act_type}","appversion":"2.0.6","appversioncode":"206","brand":"OPPO","channel":"SC_OPPO_A","darkmode":1,"device_userid":"","imei":"","model":"PCAM00","oaid":"-1","optime":${timestamp},"os":"android","osversion":"10","osversioncode":"29","smid":"${smid}","sysname":"wlkd","token":"${token}","userid":"${userid}"}`
+  hd = `{"act_type":"${act_type}","appversion":"2.0.6","appversioncode":"206","brand":"OPPO","channel":"SC_OPPO_A","darkmode":1,"device_userid":"","imei":"","model":"PCAM00","oaid":"-1","optime":${timestamp},"os":"android","osversion":"10","osversioncode":"29","smid":"D2MGVhuiztBgDbB4yN40ovKc1fDMjGc8yXI3K4ogTihCQXad","sysname":"wlkd","token":"a88a5df6b39648738f49790a6ae95433","userid":"604476a9c38c47debe229f64ccc0bd5d"}`
 $.post(wlread('hottask/profit',hd,md5('bKZ7WjF370'+token+Brand+Model+timestamp+'bKZ7WjF370')), async (err, resp, data) => {
        
       try {
