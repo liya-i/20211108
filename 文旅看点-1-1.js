@@ -4,7 +4,7 @@ var crypto = require("crypto");
 let status;
 status = (status = ($.getval("wlstatus") || "1") ) > 1 ? `${status}` : ""; // 账号扩展字符
 let wlhdArr = [],wlcount = ''
-let wlhd= '{"token":"a88a5df6b39648738f49790a6ae95433","userid":"604476a9c38c47debe229f64ccc0bd5d","smid":"D2MGVhuiztBgDbB4yN40ovKc1fDMjGc8yXI3K4ogTihCQXad"}'
+let wlhd= "a88a5df6b39648738f49790a6ae95433"
 //let md5=$.isNode() ? require('./md5') : '';
 let wlhds = ""
 let Brand ='OPPO'
