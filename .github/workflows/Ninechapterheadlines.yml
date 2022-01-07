@@ -5,7 +5,7 @@ name: Ninechapterheadlines
 on:
   workflow_dispatch:
   schedule:
-    - cron: '*/10 * * * *'
+    - cron: '10 5,8,11,15,18,22,23 * * *'
   watch:
     types: started
   repository_dispatch:
