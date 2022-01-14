@@ -5,13 +5,13 @@ let noncestr =  (process.env.jzttnoncestr ? process.env.jzttnoncestr : "X2dk9sdn
 
 let status;
 status = (status = ($.getval("jzreadstatus") || "1")) > 1 ? `${status}` : "DyaNsFhj9IAJaWRW4a_zPd_fiFZPwBSp"; // 账号扩展字符
-let jzreadurlArr = [], jzreadcount = ''
-let jzreadurl = "DyaNsFhj9IAJaWRW4a_zPd_fiFZPwBSp";
+let jzreadurlArr = 'DyaNsFhj9IAJaWRW4a_zPd_fiFZPwBSp', jzreadcount = ''
+let jzreadurl = 'DyaNsFhj9IAJaWRW4a_zPd_fiFZPwBSp';
 let cashtx = $.isNode() ? (process.env.cashtx ? process.env.cashtx : "0.3") : ($.getdata('cashtx') ? $.getdata('cashtx') : "0.3")
 let videonum = $.isNode() ? (process.env.jzvideonum ? process.env.jzvideonum : 3) : ($.getdata('jzvideonum') ? $.getdata('jzvideonum') : "3")
 let articlenum = $.isNode() ? (process.env.articlenum ? process.env.articlenum : 3) : ($.getdata('articlenum') ? $.getdata('articlenum') : "3")
 
-let jzreadurls = "DyaNsFhj9IAJaWRW4a_zPd_fiFZPwBSp"
+let jzreadurls = 'DyaNsFhj9IAJaWRW4a_zPd_fiFZPwBSp'
 const logs = 0;
 
 var hours = new Date().getHours();
