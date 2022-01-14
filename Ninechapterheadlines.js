@@ -48,7 +48,7 @@ async function all() {
 
 function TaskAD(TaskID) {
     return new Promise((resolve, reject) => {
-        const url = "https://api.st615.com/v1/task/ads";
+        const url = "https://api.st615.com/v2/task/ads";
         const headers = {};
         const body = `id=${TaskID}&token=${Token}`;
         const request = {
@@ -72,7 +72,7 @@ function TaskAD(TaskID) {
 
 function DailySign() {
     return new Promise((resolve, reject) => {
-        const url = "https://api.st615.com/v1/sign/sign";
+        const url = "https://api.st615.com/v2/sign/sign";
         const headers = {};
         const body = `token=${Token}`;
         const request = {
@@ -97,7 +97,7 @@ function DailySign() {
 
 function DailyCheck() {
     return new Promise((resolve, reject) => {
-        const url = "https://api.st615.com/v1/task/clock";
+        const url = "https://api.st615.com/v2/task/clock";
         const headers = {};
         const body = `is_double=0&token=${Token}`;
         const request = {
@@ -122,7 +122,7 @@ function DailyCheck() {
 
 function ArticleShare() {
     return new Promise((resolve, reject) => {
-        const url = "https://api.st615.com/v1/article/share";
+        const url = "https://api.st615.com/v2/article/share";
         const headers = {};
         const body = `token=${Token}`;
         const request = {
@@ -147,7 +147,7 @@ function ArticleShare() {
 
 function ArticleFinish(articleid) {
     return new Promise((resolve, reject) => {
-        const url = "https://api.st615.com/v1/article/finish";
+        const url = "https://api.st615.com/v2/article/finish";
         const headers = {};
         const body = `id=${articleid}&token=${Token}`;
         const request = {
@@ -172,7 +172,7 @@ function ArticleFinish(articleid) {
 
 function ArticelsList() {
     return new Promise((resolve, reject) => {
-        const url = `https://api.st615.com/v1/article/list?cid=0&page=3&limit=60&type=0&terminal=Apple&version=1.2.3&token=${Token}`;
+        const url = `https://api.st615.com/v2/article/list?cid=0&page=3&limit=60&type=0&terminal=Apple&version=1.2.3&token=${Token}`;
         const headers = {};
         const request = {
             url: url,
