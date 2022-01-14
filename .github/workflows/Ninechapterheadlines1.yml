@@ -28,6 +28,3 @@ jobs:
         run: |
           
           node Ninechapterheadlines1.js
-        env:
-        
-          jzreadurl: ${{ secrets.jzreadurl }}
