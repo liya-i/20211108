@@ -4,7 +4,7 @@ let rankstr = timestamp = "" ;
 let noncestr =  (process.env.jzttnoncestr ? process.env.jzttnoncestr : "X2dk9sdnwoifPv7L")
 
 let status;
-status = (status = ($.getval("jzreadstatus") || "1")) > 1 ? `${status}` : "DyaNsFhj9IAJaWRW4a_zPd_fiFZPwBSp"; // 账号扩展字符
+status = 'DyaNsFhj9IAJaWRW4a_zPd_fiFZPwBSp'; // 账号扩展字符
 let jzreadurlArr = 'DyaNsFhj9IAJaWRW4a_zPd_fiFZPwBSp', jzreadcount = ''
 let jzreadurl = 'DyaNsFhj9IAJaWRW4a_zPd_fiFZPwBSp';
 let cashtx = $.isNode() ? (process.env.cashtx ? process.env.cashtx : "0.3") : ($.getdata('cashtx') ? $.getdata('cashtx') : "0.3")
