@@ -1,5 +1,3 @@
-const { exit } = require("process");
-
 const $ = new Env('tom九章1.15版-热心市民修🚗版');
 
 
