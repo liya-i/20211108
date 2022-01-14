@@ -89,9 +89,9 @@ async function all() {
             if (data.data.ads_task[i].is_finish == 0) {
                 await ckck()
                 id = data.data.ads_task[i].id
-                await task(`post`, `https://api.st615.com/v1/task/ads`, headerss, `id=${id}&token=${jztoken}`),datas = DATA
-                if (datas.code == 0) {
-                    console.log(JSON.stringify(datas));
+                await task(`post`, `https://api.st615.com/v1/task/ads`, headerss, `id=${id}&token=${jztoken}`),data = DATA
+                if (data.code == 0) {
+                    console.log(JSON.stringify(data));
                 }
                 await $.wait(RT(30000, 36000))
             }
