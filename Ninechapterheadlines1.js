@@ -4,7 +4,7 @@ const $ = new Env('tom九章1.15版-热心市民修🚗版');
 
 
 
-let jzreadTokenArr = ['DyaNsFhj9IAJaWRW4a_zPd_fiFZPwBSp'];
+let jzreadTokenArr = 'DyaNsFhj9IAJaWRW4a_zPd_fiFZPwBSp';
 let videoNum = $.isNode() ? (process.env.jzvideonum ? process.env.jzvideonum : 0) : ($.getdata('jzvideonum') ? $.getdata('jzvideonum') : "0")
 let articleNum = $.isNode() ? (process.env.jzarticlenum ? process.env.jzarticlenum : 3) : ($.getdata('jzarticlenum') ? $.getdata('jzarticlenum') : "3")
 
