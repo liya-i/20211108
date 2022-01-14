@@ -1,7 +1,5 @@
 const $ = new Env('九章头条V2-热心市民修车版');
 
-const stringRandom = require('string-random');//1.10号 加入随机字符串包
-var crypto = require('crypto');//1.10号 加入加密包
 let rankstr = timestamp = "" ;
 let noncestr =  (process.env.jzttnoncestr ? process.env.jzttnoncestr : "X2dk9sdnwoifPv7L")
 
