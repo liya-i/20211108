@@ -27,4 +27,4 @@ jobs:
       - name: '运行 【CCTV】'
         run: |
           
-          node CCTV.js
+          node CCTV1.js
