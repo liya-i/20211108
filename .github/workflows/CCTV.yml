@@ -5,7 +5,7 @@ name: CCTV
 on:
   workflow_dispatch:
   schedule:
-    - cron: '30 0,14 * * *'
+    - cron: '30 0,8,19 * * *'
   watch:
     types: started
   repository_dispatch:
@@ -27,4 +27,4 @@ jobs:
       - name: '运行 【CCTV】'
         run: |
           
-          node CCTV1.js
+          node CCTV.js
